@@ -3,7 +3,6 @@ namespace hc450.officesupplies;
 using {Currency} from '@sap/cds/common';
 
 entity Products {
-
         @Common.Label :                                     'UUID'
     key ID               : UUID;
         identifier       : String           @Common.Label : 'ProductID';
@@ -28,6 +27,6 @@ entity Suppliers {
         postCode   : String;
         city       : String;
         country    : String;
-        proudcts   : Composition of many Products
-                         on proudcts.supplier = $self;
+        products   : Composition of many Products
+                         on products.supplier = $self;
 }

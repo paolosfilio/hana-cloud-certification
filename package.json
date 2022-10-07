@@ -7,14 +7,18 @@
   "private": true,
   "dependencies": {
     "@sap/cds": "^6",
+    "@sap/hdbext": "^7.6.6",
     "express": "^4",
-    "hdb": "^0.19.0"
+    "hdb": "^0.19.0",
+    "sap-hdbext-promisfied": "^2.202208.1"
   },
   "devDependencies": {
+    "@sap/ux-specification": "^1.102.9",
     "sqlite3": "^5.0.4"
   },
   "scripts": {
-    "start": "cds run"
+    "start": "cds run",
+    "watch-products": "cds watch --open products/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "engines": {
     "node": "^16.15"
@@ -45,13 +49,16 @@
     }
   },
   "cds": {
+    "hana": {
+      "deploy-format": "hdbtable"
+    },
     "requires": {
       "db": {
-        "kind": "sqlite",
-        "credentials": {
-          "database": "sqlite.db"
-        }
+        "kind": "hana"
       }
     }
-  }
+  },
+  "sapux": [
+    "app/products"
+  ]
 }
